@@ -1,0 +1,32 @@
+main = "src/index.ts"
+name = "openchat-next-worker"
+compatibility_date = "2024-12-05"
+compatibility_flags = ["nodejs_compat"]
+
+
+[vars]
+TELEGRAM_BOT_TOKEN = "" # 填入你的TELEGRAM api key
+TELEGRAM_USER = "" # 填入需要提醒的用户
+BUCKET_URL = "https://bucket.example.com" # 填入你的图床上传后使用的url
+
+[[kv_namespaces]]
+binding = "USERCOOKIES_KV"
+id = "099d19319cc748d893f2725xxx47bba7" # 换成你的kv id
+
+
+[[kv_namespaces]]
+binding = "MESSAGES_KV"
+id = "74d30dd9c2da46d28e7d0567cbf8b60d" # 换成你的另一个 kv id
+[observability]
+enabled = true
+head_sampling_rate = 1 # optional. default = 1.
+
+[[d1_databases]]
+binding = "D1"
+database_name = "openchat-next-worker-d1" # 换成你的db name
+database_id = "70d2ed4c-84b7-42e6-9434-215f6e9xx9e0" # 换成你的db id
+
+
+[[r2_buckets]]
+binding = "MY_BUCKET"
+bucket_name = "bucket1"  # 修改为你图床的bucket名称
